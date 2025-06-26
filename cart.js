@@ -23,4 +23,17 @@ class ShoppingCart {
           this.items.splice(index, 1);
         }
       }
-}  
+
+
+      checkout() {
+        const total = this.items.reduce(
+          (sum, { item, quantity }) => sum + item.price * quantity,
+          0
+        );
+        this.items = [];
+        return total;
+      }
+}
+
+
+module.exports = ShoppingCart;
