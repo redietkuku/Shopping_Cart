@@ -1,0 +1,23 @@
+{
+  "name": "shopping_cart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redietkuku/Shopping_Cart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redietkuku/Shopping_Cart/issues"
+  },
+  "homepage": "https://github.com/redietkuku/Shopping_Cart#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
