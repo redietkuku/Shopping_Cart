@@ -12,4 +12,15 @@ class ShoppingCart {
           this.items.push({ item, quantity });
         }
       }
+
+    
+      remove(item, quantity) {
+        const index = this.items.findIndex(i => i.item.id === item.id);
+        if (index === -1) return;
+    
+        this.items[index].quantity -= quantity;
+        if (this.items[index].quantity <= 0) {
+          this.items.splice(index, 1);
+        }
+      }
 }  
