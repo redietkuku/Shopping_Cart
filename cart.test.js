@@ -41,7 +41,7 @@ describe('ShoppingCart', () => {
     expect(cart.items.length).toBe(0);
   });
 
-  
+
   // Tests for REMOVE function
   test('should remove a quantity of an item from the cart', () => {
     // Arrange
@@ -82,5 +82,41 @@ describe('ShoppingCart', () => {
 
     // Assert
     expect(cart.items.length).toBe(0);
+  });
+
+  
+
+   // Tests for CHECKOUT function
+   test('should calculate total price correctly and clear the cart', () => {
+    // Arrange
+    cart.add(apple, 2); // 5.0
+    cart.add(banana, 3); // 3.0
+
+    // Act
+    const total = cart.checkout();
+
+    // Assert
+    expect(total).toBe(8.0);
+    expect(cart.items.length).toBe(0);
+  });
+
+  test('should return 0 for empty cart on checkout', () => {
+    // Act
+    const total = cart.checkout();
+
+    // Assert
+    expect(total).toBe(0);
+  });
+
+  test('should not double-charge after checkout', () => {
+    // Arrange
+    cart.add(apple, 2);
+    cart.checkout();
+
+    // Act
+    const total = cart.checkout();
+
+    // Assert
+    expect(total).toBe(0);
   });
 });
