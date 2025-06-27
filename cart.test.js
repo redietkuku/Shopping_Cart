@@ -1,4 +1,5 @@
-const ShoppingCart = require('./cart'); // or import { ShoppingCart } from './cart';
+
+const ShoppingCart = require('./cart');
 
 describe('ShoppingCart', () => {
   let cart;
@@ -84,13 +85,13 @@ describe('ShoppingCart', () => {
     expect(cart.items.length).toBe(0);
   });
 
-  
+
 
    // Tests for CHECKOUT function
    test('should calculate total price correctly and clear the cart', () => {
     // Arrange
-    cart.add(apple, 2); // 5.0
-    cart.add(banana, 3); // 3.0
+    cart.add(apple, 2);
+    cart.add(banana, 3);
 
     // Act
     const total = cart.checkout();
