@@ -4,7 +4,15 @@ class ShoppingCart {
     }
 
     add(item, quantity) {
-        if (quantity <= 0 || !item || typeof quantity !== 'number') return; //Prevents invalid inputs like 0, negative numbers, non-numeric, or null item
+        if (
+            quantity <= 0 || 
+            !item || 
+            typeof quantity !== 'number' || 
+            isNaN(quantity) ||
+            quantity <= 0 ||
+            typeof item.id === 'undefined' ||
+            typeof item.price !== 'number'
+            ) return; //Prevents invalid inputs
         const existing = this.items.find(i => i.item.id === item.id);
         if (existing) {
           existing.quantity += quantity; // increases quantity
