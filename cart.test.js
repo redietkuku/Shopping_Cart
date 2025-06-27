@@ -9,7 +9,7 @@ describe('ShoppingCart', () => {
     cart = new ShoppingCart();
   });
 
-  // === ADD ===
+  // Tests for ADD function
   test('should add a single item to the cart', () => {
     // Arrange
     const quantity = 3;
@@ -36,6 +36,49 @@ describe('ShoppingCart', () => {
     // Act
     cart.add(apple, 0);
     cart.add(banana, -1);
+
+    // Assert
+    expect(cart.items.length).toBe(0);
+  });
+
+  
+  // Tests for REMOVE function
+  test('should remove a quantity of an item from the cart', () => {
+    // Arrange
+    cart.add(apple, 5);
+
+    // Act
+    cart.remove(apple, 2);
+
+    // Assert
+    expect(cart.items[0].quantity).toBe(3);
+  });
+
+  test('should remove item completely if quantity reaches 0', () => {
+    // Arrange
+    cart.add(banana, 2);
+
+    // Act
+    cart.remove(banana, 2);
+
+    // Assert
+    expect(cart.items.length).toBe(0);
+  });
+
+  test('should not allow removing item not in cart', () => {
+    // Act
+    cart.remove(banana, 1);
+
+    // Assert
+    expect(cart.items.length).toBe(0); // no error, no effect
+  });
+
+  test('should not allow removing more than in cart', () => {
+    // Arrange
+    cart.add(apple, 1);
+
+    // Act
+    cart.remove(apple, 5);
 
     // Assert
     expect(cart.items.length).toBe(0);
